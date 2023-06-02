@@ -69,7 +69,7 @@ public class ReportGenerationServiceImpl implements ReportGenerationService {
 
     @Override
     public PeriodicReport generatePeriodicReport(GeneratePeriodicReportRequest requestBody) {
-            PeriodicReport.ReportContent reportContent = PeriodicReport.ReportContent.builder()
+            ReportContent reportContent = ReportContent.builder()
                     .title(requestBody.getReportContent().getTitle())
                     .content(requestBody.getReportContent().getContent())
                     .date(requestBody.getReportContent().getDate())
@@ -84,7 +84,7 @@ public class ReportGenerationServiceImpl implements ReportGenerationService {
 
     @Override
     public LegalReport generateLegalReport(GenerateLegalReportRequest requestBody) {
-            LegalReport.ReportContent reportContent = LegalReport.ReportContent.builder()
+            ReportContent reportContent = ReportContent.builder()
                     .title(requestBody.getReportContent().getTitle())
                     .content(requestBody.getReportContent().getContent())
                     .date(requestBody.getReportContent().getDate())

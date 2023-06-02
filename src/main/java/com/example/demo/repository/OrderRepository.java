@@ -12,4 +12,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Integer> {
 
+    public List<Order> findByUserAccountId(Integer id);
+
+    public List<Order> findByInvestmentTrustId(Integer id);
+
 }

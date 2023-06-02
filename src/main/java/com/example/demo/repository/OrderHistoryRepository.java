@@ -12,4 +12,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface OrderHistoryRepository extends JpaRepository<OrderHistory, Integer> {
 
+    public List<OrderHistory> findByOrderId(Integer id);
+
 }

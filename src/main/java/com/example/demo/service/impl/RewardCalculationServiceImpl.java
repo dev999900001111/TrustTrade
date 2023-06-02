@@ -32,7 +32,7 @@ public class RewardCalculationServiceImpl implements RewardCalculationService {
 
     @Override
     public RewardAmount calculateReward(CalculateRewardRequest requestBody) {
-            Reward reward = rewardRepository.findByAgencyAccountIdAndInvestmentTrustId(requestBody.getAgencyAccountId(), requestBody.getInvestmentTrustId()).orElse(null);
+            Reward reward = rewardRepository.findByAgencyAccountIdAndInvestmentTrustId(requestBody.getAgencyAccountId(), requestBody.getInvestmentTrustId()).get(0);
             if (reward == null) {
                 reward = Reward.builder()
                         .agencyAccountId(requestBody.getAgencyAccountId())
@@ -49,7 +49,7 @@ public class RewardCalculationServiceImpl implements RewardCalculationService {
 
     @Override
     public FeeAmount calculateFee(CalculateFeeRequest requestBody) {
-            Fee fee = feeRepository.findByAgencyAccountIdAndInvestmentTrustId(requestBody.getAgencyAccountId(), requestBody.getInvestmentTrustId()).orElse(null);
+            Fee fee = feeRepository.findByAgencyAccountIdAndInvestmentTrustId(requestBody.getAgencyAccountId(), requestBody.getInvestmentTrustId()).get(0);
             if (fee == null) {
                 fee = Fee.builder()
                         .agencyAccountId(requestBody.getAgencyAccountId())
@@ -68,7 +68,7 @@ public class RewardCalculationServiceImpl implements RewardCalculationService {
     public PaymentHistory createPaymentHistory(CreatePaymentHistoryRequest requestBody) {
             PaymentHistory paymentHistory = PaymentHistory.builder()
                     .agencyAccountId(requestBody.getAgencyAccountId())
-                    .paymentType(requestBody.getPaymentType())
+                    .paymentType(PaymentType.valueOf(requestBody.getPaymentType()))
                     .amount(BigDecimal.valueOf(requestBody.getAmount()))
                     .date(LocalDate.now())
                     .build();

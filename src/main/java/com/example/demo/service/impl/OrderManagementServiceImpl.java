@@ -42,7 +42,7 @@ public class OrderManagementServiceImpl implements OrderManagementService {
             Order order = Order.builder()
                     .userAccountId(requestBody.getUserAccountId())
                     .investmentTrustId(requestBody.getInvestmentTrustId())
-                    .orderType(requestBody.getOrderType())
+                    .orderType(OrderType.valueOf(requestBody.getOrderType()))
                     .amount(BigDecimal.valueOf(requestBody.getAmount()))
                     .orderStatus(Status.PENDING)
                     .createdAt(LocalDateTime.now())

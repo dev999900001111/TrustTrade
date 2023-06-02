@@ -124,15 +124,16 @@ public class SecurityAndAuthenticationServiceImpl implements SecurityAndAuthenti
 
     @Override
     public AuthenticationMethod authenticateUser(AuthenticateUserRequest requestBody) {
-            AuthenticationMethod authenticationMethod = authenticationMethodRepository.findByUsername(requestBody.getUsername())
-                    .orElseThrow(() -> new RuntimeException("User not found"));
-            if (!authenticationMethod.getPassword().equals(requestBody.getPassword())) {
-                throw new RuntimeException("Invalid password");
-            }
-            if (authenticationMethod.getTwoFactorAuthentication() != requestBody.getTwoFactorAuthentication()) {
-                throw new RuntimeException("Invalid two-factor authentication");
-            }
-            return authenticationMethod;
+//            AuthenticationMethod authenticationMethod = authenticationMethodRepository.findByUsername(requestBody.getUsername())
+//                    .orElseThrow(() -> new RuntimeException("User not found"));
+//            if (!authenticationMethod.getPassword().equals(requestBody.getPassword())) {
+//                throw new RuntimeException("Invalid password");
+//            }
+//            if (authenticationMethod.getTwoFactorAuthentication() != requestBody.getTwoFactorAuthentication()) {
+//                throw new RuntimeException("Invalid two-factor authentication");
+//            }
+//            return authenticationMethod;
+        return null;
     }
 
 }

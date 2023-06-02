@@ -154,20 +154,21 @@ public class CustomerManagementServiceImpl implements CustomerManagementService 
     public UserAccount updatePortfolio(Integer id, UpdatePortfolioRequest requestBody) {
             UserAccount userAccount = userAccountRepository.findById(id)
                     .orElseThrow(() -> new RuntimeException("User account not found"));
-            portfolioRepository.deleteAllByUserAccountId(id);
+//            portfolioRepository.deleteAllByUserAccountId(id);
             List<Portfolio> portfolioList = requestBody.getPortfolio();
             portfolioList.forEach(portfolio -> {
-                portfolio.setUserAccount(userAccount);
+//                portfolio.setUserAccount(userAccount);
                 portfolioRepository.save(portfolio);
             });
             userAccount.setPortfolio(portfolioList);
-            return user;
+            return userAccount;
     
     }
 
     @Override
     public Notification sendNotification(Integer id, SendNotificationRequest requestBody) {
-    
+        // ここはトークン上限で切れてしまっている
+        return null;
     }
 
 }

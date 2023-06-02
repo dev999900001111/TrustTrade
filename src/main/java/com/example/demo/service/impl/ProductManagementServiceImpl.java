@@ -14,7 +14,7 @@ import lombok.Data;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
-import com.example.demo.exception.ResourceNotFoundException;
+import com.example.demo.base.exception.ResourceNotFoundException;
 import com.example.demo.service.ProductManagementService.CreateInvestmentTrustRequest;
 import com.example.demo.service.ProductManagementService.UpdateInvestmentTrustRequest;
 import com.example.demo.service.ProductManagementService.UpdateTrustPriceRequest;

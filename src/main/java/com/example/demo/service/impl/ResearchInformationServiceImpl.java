@@ -32,6 +32,9 @@ public class ResearchInformationServiceImpl implements ResearchInformationServic
 
     @Autowired
     private InvestmentAdviceRepository investmentAdviceRepository;
+    
+    @Autowired
+    private UserAccountRepository userAccountRepository;
 
     @Override
     public ResearchReport createResearchReport(CreateResearchReportRequest requestBody) {
@@ -73,8 +76,8 @@ public class ResearchInformationServiceImpl implements ResearchInformationServic
             ResearchReport researchReport = researchReportRepository.findById(requestBody.getResearchReportId())
                     .orElseThrow(() -> new RuntimeException("Research report not found"));
             InvestmentAdvice investmentAdvice = InvestmentAdvice.builder()
-                    .userAccount(userAccount)
-                    .researchReport(researchReport)
+                    .userAccountId(userAccount.getId())
+                    .researchReportId(researchReport.getId())
                     .advice(requestBody.getAdvice())
                     .build();
             return investmentAdviceRepository.save(investmentAdvice);
